@@ -1,0 +1,77 @@
+{{ define "main" }}
+<a href="{{ relURL "about" }}"  class="btn btn-outline-info" id="help" target="_blank">?</a>
+<div id="app" class="p-4" v-bind:style="{ boxShadow: '0px 0px ' + opts.style.borderWidth + 'px ' + opts.style.bgColor }">
+	<div class="form-row">
+		<div class="col-6 col-lg-4">
+			<div class="form-group">
+				<label for="select-input">Input</label>
+				<select class="form-control" id="select-input" @change="onChange()" v-model="opts.selected.input">
+					<option disabled value="">Please select one</option>
+					<option v-for="input in opts.inputs">[[ input.name ]]</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-6 col-lg-2">
+			<div class="form-group">
+				<label for="select-inputchannel">Input Channel</label>
+				<select class="form-control" id="select-inputchannel" @change="onChange()" v-model.number="opts.selected.inputChannel">
+					<option disabled value="">Please select one</option>
+					<option v-for="channel in opts.channels">[[ channel ]]</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-6 col-lg-4">
+			<div class="form-group">
+				<label for="select-output">Output</label>
+				<select class="form-control" id="select-output" @change="onChange()" v-model="opts.selected.output">
+					<option disabled value="">Please select one</option>
+					<option v-for="output in opts.outputs">[[ output.name ]]</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-6 col-lg-2">
+			<div class="form-group">
+				<label for="select-outputchannel">Output Channel</label>
+				<select class="form-control" id="select-outputchannel" @change="onChange()" v-model.number="opts.selected.outputChannel">
+					<option disabled value="">Please select one</option>
+					<option v-for="channel in opts.channels">[[ channel ]]</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="col-6 col-md-3">
+			<div class="form-group" id="select-output">
+				<label for="select-notes">Polyphony</label>
+				<select class="form-control" id="select-notes" @change="onChange()" v-model.number="opts.selected.notesInChord">
+					<option disabled value="">Please select one</option>
+					<option v-for="notes in opts.notesInChord">[[ notes ]]</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-6 col-md-3">
+			<div class="form-group" id="input-cc-toggle">
+				<label for="input-cc-toggle">CC Toggle</label>
+				<input class="form-control" id="input-cc" type="number" @change="onChange()" v-model.number="opts.selected.ccToggle">
+			</div>
+		</div>
+		<div class="col-6 col-md-3">
+			<div class="form-group" id="input-cc-breath">
+				<label for="input-cc-breath">CC Breath</label>
+				<input class="form-control" id="input-cc" type="number" @change="onChange()" v-model.number="opts.selected.ccBreath">
+			</div>
+		</div>
+		<div class="col-6 col-md-3">
+			<div class="form-group" id="input-cc-breath">
+				<label for="input-cc-breath">% Breath Forward</label>
+				<input class="form-control" id="input-cc-forward" type="number" @change="onChange()" v-model.number="opts.selected.ccBreathForward">
+			</div>
+		</div>
+	</div>
+	<section id="events" class="text-white p-3 mt-2">
+		<ul>
+			<li v-for="event in events">[[ event ]]</li>
+		</ul>
+	</section>
+</div>
+{{ end }}

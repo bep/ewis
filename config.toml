@@ -1,0 +1,9 @@
+baseURL = "https://ewis.netlify.com"
+languageCode = "en-us"
+title = "EWIS"
+
+pygmentsUseClasses =  false
+pygmentsCodeFences = true
+pygmentsStyle = "fruity"
+
+disableKinds = ["section", "taxonomy", "taxonomyTerm"]

@@ -1,0 +1,67 @@
+@import "variables";
+
+@import "../vendor/bootstrap/scss/bootstrap";
+
+body {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+h3 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+#app {}
+
+#help {
+    @include media-breakpoint-up(md) {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+    }
+
+
+    @include media-breakpoint-down(sm) {
+        position: absolute;
+        left: 1rem;
+        bottom: 1rem;
+    }
+}
+
+#events {
+    ul {
+        padding: 0;
+
+        li {
+            list-style: none;
+        }
+    }
+
+    overflow: scroll;
+    min-height: 80px;
+
+    @include media-breakpoint-up(md) {
+        min-height: 400px;
+    }
+}
+
+.single {
+     @include media-breakpoint-up(md) {
+       width: 70%;
+    }
+
+}
+
+table {
+    @extend .table-striped;
+
+    @extend .table-responsive;
+
+    @extend .table;
+}
+
+.btn {
+    border-radius: 50%;
+}
