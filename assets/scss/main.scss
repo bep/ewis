@@ -16,17 +16,17 @@ h3 {
 #app {}
 
 #help {
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(xl) {
         position: absolute;
         left: 1rem;
         top: 1rem;
     }
 
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(lg) {
         position: absolute;
         left: 1rem;
-        bottom: 1rem;
+        bottom: 2rem;
     }
 }
 
@@ -40,10 +40,10 @@ h3 {
     }
 
     overflow: scroll;
-    min-height: 80px;
+    height: 80px;
 
     @include media-breakpoint-up(md) {
-        min-height: 400px;
+        height: 400px;
     }
 }
 

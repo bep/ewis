@@ -1,4 +1,5 @@
 $font-size-base:              0.875rem !default;
+$enable-gradients: true;
 
 $white:    #F0F0F0 !default;
 $gray-100: #f8f9fa !default;
@@ -23,18 +24,18 @@ $green:   #62c462 !default;
 $teal:    #20c997 !default;
 $cyan:    #5bc0de !default;
 
-$primary:       #0D1321 !default;
-$secondary:     $gray-600 !default;
+$primary:       $gray-900 !default;
+$secondary:     $gray-800 !default;
 $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-200 !default;
-$dark:          $primary !default;
+$dark:          $gray-900 !default;
 
 // Body
 
-$body-bg:                   $dark !default;
+$body-bg:                   $primary !default;
 $body-color:                $gray-400  !default;
 
 

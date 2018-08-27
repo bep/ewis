@@ -2,6 +2,8 @@ baseURL = "https://ewis.netlify.com"
 languageCode = "en-us"
 title = "EWIS"
 
+googleAnalytics = "UA-52478213-12"
+
 pygmentsUseClasses =  false
 pygmentsCodeFences = true
 pygmentsStyle = "fruity"
