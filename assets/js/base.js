@@ -209,8 +209,13 @@ limitations under the License.
 
             this.stopPlaying = function() {
                 if (this.notesPlaying.length > 0) {
-                    // Stop the playing chord.
-                    this.output.stopNote("all", this.opts.selected.outputChannel);
+                    // It would be tempting to just send a not off to "all",
+                    // but that seem to not work on all synths.
+                    // this.output.stopNote("all", this.opts.selected.outputChannel);
+                    for (i = 0; i < this.notesPlaying.length; i++) {
+                        var note = this.notesPlaying[i];
+                        this.output.stopNote(note, this.opts.selected.outputChannel);
+                    }
                     this.notesPlaying = [];
                 }
             };
