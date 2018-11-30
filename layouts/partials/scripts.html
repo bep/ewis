@@ -1,5 +1,5 @@
 {{ $.Scratch.Set "jslibs" slice }}
-{{ $libs := slice "js/lodash.js" "js/vue.js" "js/webmidi.js" "js/base.js" }}
+{{ $libs := slice "js/lodash.js" "js/vue.min.js" "js/webmidi.js" "js/base.js" }}
 {{ range $libs }}
 {{ $.Scratch.Add "jslibs" (resources.Get . ) }}
 {{ end }}
