@@ -14,7 +14,7 @@ limitations under the License.
 
 */
 
-(function() {
+(function () {
 
     function midiValToColor(val) {
         var fraction = val / 127;
@@ -24,17 +24,17 @@ limitations under the License.
     }
 
 
-    WebMidi.enable(function(err) {
+    WebMidi.enable(function (err) {
         if (err) {
             alert("WebMidi failed", err);
             return
         }
 
-        var normalizeName = function(name) {
+        var normalizeName = function (name) {
             return name.replace(/\s\s+/g, ' ');
         }
 
-        var byName = function(list, name) {
+        var byName = function (list, name) {
             name = normalizeName(name);
             for (var i = 0; i < list.length; i++) {
                 if (name === normalizeName(list[i].name)) {
@@ -44,7 +44,7 @@ limitations under the License.
             return false;
         };
 
-        var getDefaultDevice = function(list, re) {
+        var getDefaultDevice = function (list, re) {
             if (list.length === 0) {
                 return ""
             }
@@ -97,7 +97,7 @@ limitations under the License.
                         this.initCallback();
                     }
                 },
-                addEvent: function(e) {
+                addEvent: function (e) {
                     var str = Array.prototype.slice.call(arguments).join(" ");
                     this.events.push(str);
                     var container = this.$el.querySelector("#events");
@@ -125,7 +125,7 @@ limitations under the License.
             // Store away the breath values so we can set some sensible velocity for the chord tones.
             this.breathValues = [];
 
-            this.log = function(e) {
+            this.log = function (e) {
                 var str = Array.prototype.slice.call(arguments).join(" ");
                 app.addEvent(str);
             };
@@ -133,7 +133,7 @@ limitations under the License.
             this.opts = app.opts;
 
 
-            this.initIfReady = function() {
+            this.initIfReady = function () {
                 var opts = this.opts;
                 if (opts.selected.input && opts.selected.output) {
                     this.init()
@@ -142,11 +142,11 @@ limitations under the License.
 
             var that = this;
 
-            app.initCallback = function() {
+            app.initCallback = function () {
                 that.initIfReady();
             }
 
-            this.init = function() {
+            this.init = function () {
                 this.stopPlaying();
                 this.state = 0;
 
@@ -170,7 +170,7 @@ limitations under the License.
 
                 var that = this;
 
-                var incrState = _.debounce(function(e) {
+                var incrState = _.debounce(function (e) {
                     that.state++;
                     if (that.state >= 3) {
                         that.state = 1;
@@ -179,13 +179,13 @@ limitations under the License.
                 }, 100);
 
                 this.input.addListener('noteon', selected.inputChannel,
-                    function(e) {
+                    function (e) {
                         that.playNote(e);
                     }
                 );
 
                 this.input.addListener('controlchange', selected.inputChannel,
-                    function(e) {
+                    function (e) {
                         if (e.controller.number == selected.ccBreath) {
                             var val = e.data[2];
                             that.opts.style.bgColor = midiValToColor(val);
@@ -207,7 +207,7 @@ limitations under the License.
                 );
             };
 
-            this.stopPlaying = function() {
+            this.stopPlaying = function () {
                 if (this.notesPlaying.length > 0) {
                     // It would be tempting to just send a not off to "all",
                     // but that seem to not work on all synths.
@@ -220,7 +220,7 @@ limitations under the License.
                 }
             };
 
-            this.playNote = function(e) {
+            this.playNote = function (e) {
                 if (this.state > 0 && this.state <= 2) {
                     if (this.state == 1) {
                         this.stopPlaying();
