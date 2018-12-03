@@ -65,7 +65,7 @@ limitations under the License.
         var defaultOutput = normalizeName(getDefaultDevice(WebMidi.inputs, "magellan"));
 
         var app = new Vue({
-            delimiters: ['[[', ']]'],
+            delimiters: ['[[', ']]'], // To make Hugo happy
             el: '#app',
             data: {
                 opts: {
@@ -82,7 +82,7 @@ limitations under the License.
                         output: defaultOutput,
                         ccToggle: 64, // Sustain Pedal
                         ccBreath: 2, // Breath Controller
-                        ccBreathForward: 30, // Percentage of breath input to forward to output channel
+                        ccBreathForward: 90, // Percentage of breath input to forward to output channel
                         notesInChord: 4,
                         inputChannel: 1,
                         outputChannel: 2
@@ -99,9 +99,10 @@ limitations under the License.
                 },
                 addEvent: function (e) {
                     var str = Array.prototype.slice.call(arguments).join(" ");
-                    this.events.push(str);
-                    var container = this.$el.querySelector("#events");
-                    container.scrollTop = container.scrollHeight;
+                    this.events.unshift(str);
+                    if (this.events.length > 40) {
+                        this.events.length = 20;
+                    }
                 },
             }
         })
@@ -209,14 +210,15 @@ limitations under the License.
 
             this.stopPlaying = function () {
                 if (this.notesPlaying.length > 0) {
-                    // It would be tempting to just send a not off to "all",
-                    // but that seem to not work on all synths.
+                    // Sending note off to "all" should be enough,
+                    // but this doesn't seem to work for all synths, so
+                    // do a little double work to make sure.
                     this.output.stopNote("all", this.opts.selected.outputChannel);
                     for (i = 0; i < this.notesPlaying.length; i++) {
                         var note = this.notesPlaying[i];
                         this.output.stopNote(note, this.opts.selected.outputChannel);
                     }
-                    this.notesPlaying = [];
+                    this.notesPlaying.length = 0;
                 }
             };
 
@@ -235,12 +237,12 @@ limitations under the License.
 
                     this.log("Add note", e.note.name);
                     var velocity = _.max(this.breathValues);
-                    this.breathValues = [];
+                    this.breathValues.length = 0;
                     var selected = this.opts.selected;
 
                     this.output.playNote(e.note.number, selected.outputChannel, {
-                        rawVelocity: true,
-                        duration: 20000,
+                        rawVelocity: true, // Use the raw max breath value (0-127)
+                        duration: 30000, // Hold for 30 seconds
                         velocity: velocity,
                         release: velocity
                     });
@@ -248,15 +250,12 @@ limitations under the License.
 
                     this.notesPlaying.push(e.note.number);
 
-                    // Auto-toggle when reached the treshold.
+                    // Auto-toggle on treshold.
                     if (this.notesPlaying.length >= selected.notesInChord) {
                         this.state = 3;
                     }
-
                 };
             };
         };
-
     });
-
 })();

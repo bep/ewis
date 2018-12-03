@@ -9,9 +9,9 @@ You need:
 
 * An [EWI](https://en.wikipedia.org/wiki/EWI_(musical_instrument)) or similar breath controller.
 * A "breath friendly" synth or two. I recommend [Magellan](http://www.yonac.com/magellan/) on iOS (it is available for both iPad and iPhone) with [mkirino01's](https://www.youtube.com/watch?v=nKvo1yZBkr0) great, free patches. It has two synth engines, so you can use one for the lead and the second for a pad type of sound for the chords.
-* A browser that supports [Web MIDI](https://github.com/djipco/webmidi#browser-support). On IOS (e.g. iPad) you need to install [Web MIDI Browser ](https://itunes.apple.com/us/app/web-midi-browser/id953846217?mt=8).
+* A browser that supports [Web MIDI](https://github.com/djipco/webmidi#browser-support). On IOS (e.g. iPad) you need to install [Web MIDI Browser ](https://itunes.apple.com/us/app/web-midi-browser/id953846217?mt=8). On `macOS`, Chrome works great (Safari does not).
 
-I have the Magellan synth running on an iPad Air, and an [Akai EWI USB](http://www.akaipro.com/products/ewi-series/ewi-usb) connected wirelessly via an [UD-BT01 bluetooth dongle](http://usa.yamaha.com/products/music-production/accessories/usb-midi/ud-bt01/) powered by an [USB battery/powerbank](http://www.clasohlson.com/no/Clas-Ohlson,-Powerbank-2600-mAh-/Pr386941000).
+I have tested this on both `macOS` (in both Logic X and MainStage) and on `IOS` (using the Magellan synth running on an iPad Air) with an [Akai EWI USB](http://www.akaipro.com/products/ewi-series/ewi-usb).
 
 I have the "thumb bend down" mapped to CC 64 (sostenuto; see the `CC Toggle` setting below), which is what I use to trigger a new chord sequence with a single tap. This plays-and-holds up to the number of notes configured by the `Polyphony` setting (see below) with velocity matching the breath.  
 

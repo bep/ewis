@@ -17,8 +17,6 @@ h2, h3 {
     text-transform: uppercase;
 }
 
-#app {}
-
 #help {
     @include media-breakpoint-up(xl) {
         position: absolute;
@@ -39,6 +37,12 @@ h2, h3 {
         padding: 0;
 
         li {
+            &:first-child {
+                background-color: lighten($primary, 15%);
+                padding: 0.5rem;
+                margin-bottom: 1rem;
+            }
+
             list-style: none;
         }
     }
