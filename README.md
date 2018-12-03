@@ -3,7 +3,16 @@
 
 This app is developed by [bep](https://github.com/bep) and powered by [Hugo](https://gohugo.io/), [Vue](http://vuejs.org/) and [WebMIDI](https://github.com/djipco/webmidi).
 
-### How to Use
+
+## Demo
+
+<iframe class="mb-4" width="560" height="315" src="https://www.youtube.com/embed/csM-4qtvIDo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+The violin patch in the video above is the SWAM Violin from AudioModeling, the synth pad for the chords comes from the Alchemy synth in MainStage 3.
+
+It is played with an Akai EWI USB wind controller with the "thumb up" controller mapped to CC 5 (portamento, very importamt on Violin) and "thumb down" to CC 64 (sustain, to trigger a new chord seuence).
+
+## How to Use
 
 You need:
 
@@ -13,9 +22,9 @@ You need:
 
 I have tested this on both `macOS` (in both Logic X and MainStage) and on `IOS` (using the Magellan synth running on an iPad Air) with an [Akai EWI USB](http://www.akaipro.com/products/ewi-series/ewi-usb).
 
-I have the "thumb bend down" mapped to CC 64 (sostenuto; see the `CC Toggle` setting below), which is what I use to trigger a new chord sequence with a single tap. This plays-and-holds up to the number of notes configured by the `Polyphony` setting (see below) with velocity matching the breath.  
+I have the "thumb bend down" mapped to CC 64 (sustain; see the `CC Toggle` setting below), which is what I use to trigger a new chord sequence with a single tap. This plays-and-holds up to the number of notes configured by the `Polyphony` setting (see below) with velocity matching the breath.
 
-### Settings
+## Settings
 
 | Setting | Description |
 | --- | --- |
@@ -29,7 +38,8 @@ I have the "thumb bend down" mapped to CC 64 (sostenuto; see the `CC Toggle` set
 | %&nbsp;Breath&nbsp;Forward | Percentage of the MIDI breath value that gets forwarded to the output channel. This can be used to add some life to the chord pad. |
 
 
-### Build From Source 
+## Build From Source
+
 You need [Hugo](https://gohugo.io/) installed. Then you can just `git clone https://github.com/bep/ewis.git` and run `hugo server`.
 
 If you want to develop and test your tweaks on an iPad, you may want a public URL for your development server. One way would be to use [ngrok](https://ngrok.com/) and then start your server with:

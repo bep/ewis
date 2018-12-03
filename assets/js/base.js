@@ -242,7 +242,7 @@ limitations under the License.
 
                     this.output.playNote(e.note.number, selected.outputChannel, {
                         rawVelocity: true, // Use the raw max breath value (0-127)
-                        duration: 30000, // Hold for 30 seconds
+                        duration: 20000, // Hold for 20 seconds
                         velocity: velocity,
                         release: velocity
                     });
